@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Get</title>
+    <style>
+        body {
+            background-color: lightblue;
+        }
+
+        .titulo-container {
+            background-color: rgb(248, 228, 238);
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="titulo-container">
+        <h1>Formulario de registro personal:</h1>
+    </div>
+    <form action="Muestra.html" method="get">
+       <label> Nombre:<br></label><input type="text" name="nombre"><br><br>
+        <label> Apellidos:<br></label><input type="text" name="apellidos"><br><br>
+        <label> Correo:<br></label><input type="email" name="correo"><br><br>
+        <label> Fecha de nacimiento:<br></label><input type="date" name="fechaN"><br><br>
+        <label> Teléfono:<br></label><input type="tel" name="telefono"><br><br>
+        <label> Usuario:<br></label><input type="text" name="Usuario"><br><br>
+        <label> Contraseña:<br></label><input type="password" name="contraseña"><br><br>
+        <label> Repetir contraseña:<br></label><input type="password" name="repetir contraseña"><br><br>
+        <input type="submit" value="Registrar"><br><br>
+    </form>
+    <script>
+     document.getElementById("registroForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var nombre = document.getElementById("nombre").value;
+            var apellidos = document.getElementById("apellidos").value;
+            var correo = document.getElementById("correo").value;
+            var telefono = document.getElementById("telefono").value;
+            var fechaN = document.getElementById("fechaN").value;
+            var contraseña = document.getElementById("contraseña").value;
+
+            window.location.href = "Muestra.html?nombre=" + encodeURIComponent(nombre) + "&apellidos=" + encodeURIComponent(apellidos) + "&correo=" + encodeURIComponent(correo) + "telefono=" + encodeURIComponent(telefono) + "&fechaN=" + encodeURIComponent(fechaN) + "&contraseña=" + encodeURIComponent(contraseña);
+        });
+</script>
+</body>
+</html>

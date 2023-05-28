@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muestra</title>
+</head>
+<body>
+    <h1>PAGINA DE MUESTRA</h1>
+    <style>
+        body {
+            background-color: rgb(240, 214, 236);
+        }
+    </style>
+    <h1 id="nombre"> </h1>
+    <h2 id="apellidos"></h2>
+    <a id ="correo" href="mailto:correo">Enviar correo</a><br>
+    <a id ="telefono" href="tel:telefono">Llamar</a>
+    <p id = "edadMostrada"></p>
+    <script>
+       const urlParams = new URLSearchParams(window.location.search);
+
+const nombre = urlParams.get("nombre");
+const apellidos = urlParams.get("apellidos");
+const correo = urlParams.get("correo");
+const telefono = urlParams.get("telefono");
+const fechaN = urlParams.get("fechaN");
+const contraseña = urlParams.get("contraseña");
+
+document.getElementById("nombre").innerHTML = nombre;
+document.getElementById("apellidos").innerHTML = apellidos;
+document.getElementById("correo").href = "mailto:" + correo;
+document.getElementById("telefono").href = "tel:" + telefono;
+
+const fechaNDate = new Date(fechaN);
+const edad = calcularEdad(fechaNDate);
+document.getElementById("edadMostrada").textContent = "Tienes " + edad + " años.";
+
+if (contraseña.length < 5) {
+    alert("Advertencia: ¡La contraseña es insegura!");
+}
+
+function calcularEdad(birthday) {
+    var ageDifMs = Date.now() - birthday.getTime();
+    var ageDate = new Date(ageDifMs);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+        }
+    </script>
+
+</body>
+
+</html>
